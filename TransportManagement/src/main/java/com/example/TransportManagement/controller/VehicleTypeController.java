@@ -1,14 +1,16 @@
 package com.example.TransportManagement.controller;
 
 import com.example.TransportManagement.baseresponse.BaseResponse;
-import com.example.TransportManagement.dto.UserDTO;
+import com.example.TransportManagement.dto.LoadDTO;
 import com.example.TransportManagement.dto.VehicleTypeDTO;
+import com.example.TransportManagement.entity.Load;
 import com.example.TransportManagement.entity.VehicleType;
 import com.example.TransportManagement.serviece.UserServiece;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RequestMapping("/vehicleType")
 @RestController
@@ -23,12 +25,15 @@ public class VehicleTypeController {
     }
 
     @PutMapping("/update")
-    public BaseResponse updateDetail(@RequestBody VehicleTypeDTO vehicleTypeDTO){
-        return userServiece.updateVehicleTypeForVehicle(vehicleTypeDTO);
+    public BaseResponse updateVehicleType(@RequestBody VehicleTypeDTO vehicleTypeDTO){
+        return userServiece.updateVehicleType(vehicleTypeDTO);
     }
-
+    @PutMapping("/delete")
+    public BaseResponse deleteVehicleType(@RequestBody VehicleTypeDTO vehicleTypeDTO){
+        return userServiece.deleteVehicleType(vehicleTypeDTO);
+    }
     @GetMapping("/getAll")
-    public List<VehicleType> list(){
+    public List<VehicleType> listAll(){
         return userServiece.listAll();
     }
 

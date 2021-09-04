@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Data
+
 @Getter
 @Setter
 public class VehicleTypeDTO {
@@ -13,8 +13,8 @@ public class VehicleTypeDTO {
 
     private String vehicleName;
 
-    private Integer isActive;
+    private int isActive;
 
-    private Integer isDelete;
+    private int isDelete;
 
 }

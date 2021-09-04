@@ -1,7 +1,6 @@
 package com.example.TransportManagement.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,16 +13,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+
+@Getter
+@Setter
+
 @Table(name = "vehicle")
-@Data
-@NoArgsConstructor
-@Transactional
 public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "vehicle_id")
-    private Integer vehicle_id;
+    private int id;
 
     @Column(name = "vehicle_name",nullable = false)
     private String vehicle_name;
@@ -38,23 +38,22 @@ public class Vehicle {
     private int isDelete;
 
 
-    @CreationTimestamp
+
     @Column(name = "created_at")
-    private Time createDateTime;
+    private Timestamp createDateTime;
 
 
-    @UpdateTimestamp
+
     @Column(name = "modified_at")
-    private Time updateDateTime;
+    private Timestamp updateDateTime;
 
     @OneToOne
     @JoinColumn(name = "fk_vehicle_type_id")
-    private VehicleType vehicleType;
+    private VehicleType vehicle_type_id;
 
     @ManyToOne
-    @JoinColumn(name = "fk_user_id",nullable = false,updatable = false)
+    @JoinColumn(name = "fk_user_id")
     private User user;
 
-    @OneToMany(mappedBy = "vehicle")
-    private List<Load>loads;
+
 }

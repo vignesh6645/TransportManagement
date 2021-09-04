@@ -6,12 +6,12 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Data
+
 @Getter
 @Setter
 public class UserDTO {
 
-    private Integer id;
+    private int id;
 
     private String name;
 

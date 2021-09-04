@@ -1,8 +1,6 @@
 package com.example.TransportManagement.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,9 +12,9 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@Transactional
+@Getter
+@Setter
+
 @Entity
 @Table(name = "User_vg")
 public class User {
@@ -24,9 +22,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Integer id;
+    private int id;
 
-    @Column(name = "name",nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "password")
@@ -39,16 +37,14 @@ public class User {
     private int isDelete;
 
     @Column(name = "created_at")
-    @CreationTimestamp
-    private LocalDateTime createDateTime;
+    private Timestamp createDateTime;
 
-    @UpdateTimestamp
+
     @Column(name = "modified_at")
-    private LocalDateTime updateDateTime;
-
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private List<Vehicle>vehicle;
+    private Timestamp updateDateTime;
 
 
-
+  /*   @ToString.Exclude
+  @OneToMany(mappedBy = "user")
+    private List<Vehicle>vehicle;*/
 }
