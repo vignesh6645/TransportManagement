@@ -13,9 +13,9 @@ public class VehicleDTO {
 
     private  int vehicle_id;
 
-    private String vehicle_name;
+    private String vehicleName;
 
-    private int registrationNumber;
+    private Integer registrationNumber;
 
     private Integer vehicle_type_id;
 

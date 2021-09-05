@@ -26,10 +26,10 @@ public class VehicleController {
       return userServiece.updateVehicle(vehicleDTO);
    }
 
-    @GetMapping("/pagination/{offset}/{pageSize}/{vehicle_name}")
+    @GetMapping("/page/{offset}/{pageSize}/{vehicleName}")
     private APIResponse<Vehicle> vehiclePagination
-            (@PathVariable int offset, @PathVariable int pageSize, @PathVariable String vehicle_name){
-        return userServiece.vehiclePagination(offset, pageSize,vehicle_name);
+            (@PathVariable int offset, @PathVariable int pageSize, @PathVariable String vehicleName){
+        return userServiece.vehiclePagination(offset, pageSize, vehicleName);
     }
 
     @GetMapping("/vehicleId/{id}")

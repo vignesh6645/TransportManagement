@@ -1,16 +1,10 @@
 package com.example.TransportManagement.entity;
 
-import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import javax.validation.constraints.NotEmpty;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 
@@ -23,13 +17,13 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "vehicle_id")
-    private int id;
+    private Integer id;
 
     @Column(name = "vehicle_name",nullable = false)
-    private String vehicle_name;
+    private String vehicleName;
 
     @Column(name = "registration_number")
-    private Integer registrationNumber;
+    private int registrationNumber;
 
     @Column(name = "is_active",columnDefinition = "integer default 0")
     private int isActive;
@@ -37,12 +31,8 @@ public class Vehicle {
     @Column(name = "is_delete",columnDefinition = "integer default 0")
     private int isDelete;
 
-
-
     @Column(name = "created_at")
     private Timestamp createDateTime;
-
-
 
     @Column(name = "modified_at")
     private Timestamp updateDateTime;

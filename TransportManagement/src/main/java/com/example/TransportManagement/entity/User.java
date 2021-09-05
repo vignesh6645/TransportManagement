@@ -22,7 +22,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -44,7 +44,7 @@ public class User {
     private Timestamp updateDateTime;
 
 
-  /*   @ToString.Exclude
-  @OneToMany(mappedBy = "user")
+   /* @ToString.Exclude
+    @OneToMany(mappedBy = "user")
     private List<Vehicle>vehicle;*/
 }

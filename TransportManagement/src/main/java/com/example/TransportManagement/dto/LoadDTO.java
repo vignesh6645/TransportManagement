@@ -13,7 +13,7 @@ import java.util.List;
 
 public class LoadDTO {
 
-    private int load_id;
+    private Integer load_id;
 
     private String loadName;
 

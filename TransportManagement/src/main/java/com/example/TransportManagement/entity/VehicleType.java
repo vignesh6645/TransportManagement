@@ -24,7 +24,7 @@ public class VehicleType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "vehicle_type_id")
-    private Integer id;
+    private Integer vehicle_type_id;
 
     @Column(name = "vehicleName")
     private String vehicleName;

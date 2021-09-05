@@ -138,7 +138,7 @@ public class UserServiece {
         BaseResponse baseResponse = new BaseResponse();
 
         Optional<VehicleType>existVehicleType = vehicleTypeRepository.findById(vehicleTypeDTO.getVehicle_type_id());
-        existVehicleType.get().setId(vehicleTypeDTO.getVehicle_type_id());
+        existVehicleType.get().setVehicle_type_id(vehicleTypeDTO.getVehicle_type_id());
         existVehicleType.get().setVehicleName(vehicleTypeDTO.getVehicleName());
         existVehicleType.get().setIsActive(vehicleTypeDTO.getIsActive());
         existVehicleType.get().setIsDelete(vehicleTypeDTO.getIsDelete());
@@ -245,7 +245,7 @@ public class UserServiece {
 
         Vehicle vehicle = new Vehicle();
         BaseResponse  baseResponse = new BaseResponse();
-        vehicle.setVehicle_name(vehicleDTO.getVehicle_name());
+        vehicle.setVehicleName(vehicleDTO.getVehicleName());
         vehicle.setRegistrationNumber(vehicleDTO.getRegistrationNumber());
 
         Optional<VehicleType> vehicleType=vehicleTypeRepository.
@@ -274,7 +274,7 @@ public class UserServiece {
 
     public  BaseResponse updateVehicle(VehicleDTO vehicleDTO){
         Optional<Vehicle> existVehicle = vehicleRespository.findById(vehicleDTO.getVehicle_id());
-        existVehicle.get().setVehicle_name(vehicleDTO.getVehicle_name());
+        existVehicle.get().setVehicleName(vehicleDTO.getVehicleName());
         existVehicle.get().setRegistrationNumber(vehicleDTO.getRegistrationNumber());
 
         Optional<VehicleType> vehicleType=vehicleTypeRepository.findById(vehicleDTO
@@ -315,10 +315,9 @@ public class UserServiece {
 
         return baseResponse;
     }
-    public APIResponse<Vehicle>vehiclePagination(int offset,int pageSize,String vehicle_name){
+    public APIResponse<Vehicle> vehiclePagination(int offset, int pageSize, String vehicleName){
         Pageable paging=PageRequest.of(offset,pageSize);
-        Page<Vehicle> vehicles=vehicleRespository.searchAllByregistrationNumberLike
-                ("%"+ vehicle_name + "%",paging);
+        Page<Vehicle> vehicles=vehicleRespository.searchAllByvehicleNameLike("%"+ vehicleName +"%", paging);
         APIResponse apiResponse = new APIResponse();
         apiResponse.setResponse(vehicles);
         apiResponse.setRecordCount(vehicles.getTotalPages());

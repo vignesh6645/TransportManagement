@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RequestMapping("/vehicleType")
+
 @RestController
+@RequestMapping("/vehicleType")
 public class VehicleTypeController {
 
     @Autowired

@@ -24,7 +24,7 @@ public class Load {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "load_id")
-    private int load_id;
+    private Integer load_id;
 
     @Column(name = "load_name")
     private String loadName;
