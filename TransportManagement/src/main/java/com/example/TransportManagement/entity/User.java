@@ -5,12 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import javax.validation.constraints.NotEmpty;
-import java.sql.Time;
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -36,15 +33,14 @@ public class User {
     @Column(name = "is_delete",columnDefinition = "integer default 0")
     private int isDelete;
 
+    @CreationTimestamp
     @Column(name = "created_at")
-    private Timestamp createDateTime;
+    private LocalDateTime createDateTime;
 
-
+    @UpdateTimestamp
     @Column(name = "modified_at")
-    private Timestamp updateDateTime;
+    private LocalDateTime updateDateTime;
 
 
-   /* @ToString.Exclude
-    @OneToMany(mappedBy = "user")
-    private List<Vehicle>vehicle;*/
+
 }

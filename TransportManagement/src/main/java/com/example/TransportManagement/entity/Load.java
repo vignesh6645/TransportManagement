@@ -1,18 +1,13 @@
 package com.example.TransportManagement.entity;
-
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import java.sql.Time;
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
-import java.util.List;
+
 
 @Entity
 
@@ -38,11 +33,13 @@ public class Load {
     @Column(name = "is_delete",columnDefinition = "integer default 0")
     private int isDelete;
 
+    @CreationTimestamp
     @Column(name = "created_at")
-    private Timestamp createDateTime;
+    private LocalDateTime createDateTime;
 
+    @UpdateTimestamp
     @Column(name = "modified_at")
-    private Timestamp updateDateTime;
+    private LocalDateTime updateDateTime;
 
     @ManyToOne
     @JoinColumn(name = "fk_vehicle_id")

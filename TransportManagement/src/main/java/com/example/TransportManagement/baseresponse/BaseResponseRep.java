@@ -1,15 +1,16 @@
 package com.example.TransportManagement.baseresponse;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Builder
-public class APIResponse <T>{
+@Data
+public
+class BaseResponseRep<T> {
 
     @Builder.Default
     private String statusMsg="Success";
@@ -17,8 +18,5 @@ public class APIResponse <T>{
     @Builder.Default
     private String statusCode = "200";
 
-   // @Builder.Default
-    Integer recordCount;
-
-    T response;
+    private T Data;
 }

@@ -1,10 +1,10 @@
 package com.example.TransportManagement.dto;
 
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 
 

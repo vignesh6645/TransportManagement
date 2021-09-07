@@ -1,17 +1,14 @@
 package com.example.TransportManagement.entity;
 
-import lombok.Data;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import javax.validation.constraints.NotEmpty;
-import java.sql.Time;
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,7 +24,7 @@ public class VehicleType {
     private Integer vehicle_type_id;
 
     @Column(name = "vehicleName")
-    private String vehicleName;
+    private String vehicleTypeName;
 
     @Column(name = "is_active",columnDefinition = "integer default 0")
     private int isActive;
@@ -35,9 +32,11 @@ public class VehicleType {
     @Column(name = "is_delete",columnDefinition = "integer default 0")
     private int isDelete;
 
+    @CreationTimestamp
     @Column(name = "created_at")
-    private Timestamp createDateTime;
+    private LocalDateTime createDateTime;
 
+    @UpdateTimestamp
     @Column(name = "modified_at")
-    private Timestamp updateDateTime;
+    private LocalDateTime updateDateTime;
 }
