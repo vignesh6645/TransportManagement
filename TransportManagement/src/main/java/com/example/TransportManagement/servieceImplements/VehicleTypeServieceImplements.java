@@ -46,8 +46,14 @@ public class VehicleTypeServieceImplements implements VehicleTypeInterface {
     public Optional<VehicleType> updatevehicleType(VehicleTypeDTO vehicleTypeDTO) {
 
         Optional<VehicleType> existVehicleType = vehicleTypeRepository.findById(vehicleTypeDTO.getVehicle_type_id());
-        existVehicleType.get().setVehicle_type_id(vehicleTypeDTO.getVehicle_type_id());
-        existVehicleType.get().setVehicleTypeName(vehicleTypeDTO.getVehicleTypeName());
+        if (existVehicleType.isPresent()){
+
+            existVehicleType.get().setVehicle_type_id(vehicleTypeDTO.getVehicle_type_id());
+            existVehicleType.get().setVehicleTypeName(vehicleTypeDTO.getVehicleTypeName());
+        }
+        else {
+            throw new RuntimeException("Not found");
+        }
 
         VehicleType obj = vehicleTypeRepository.save(existVehicleType.get());
         return existVehicleType;
@@ -57,17 +63,23 @@ public class VehicleTypeServieceImplements implements VehicleTypeInterface {
     public Optional<VehicleType> deletevehicleType(VehicleTypeDTO vehicleTypeDTO) {
 
         Optional<VehicleType> existVehicleType=vehicleTypeRepository.findById(vehicleTypeDTO.getVehicle_type_id());
-        existVehicleType.get().setIsDelete(1);
-        VehicleType obj = vehicleTypeRepository.save(existVehicleType.get());
+        if (existVehicleType.isPresent()){
+
+            existVehicleType.get().setIsDelete(1);
+            VehicleType obj = vehicleTypeRepository.save(existVehicleType.get());
+        }
+        else {
+            throw new RuntimeException("Not found");
+        }
 
         return existVehicleType;
 
     }
 
     @Override
-    public List<VehicleType> listall() {
-
-        return vehicleTypeRepository.findAll();
+    public List<VehicleType> listAll() {
+        List<VehicleType> obj=vehicleTypeRepository.findAll();
+        return obj;
     }
 
 

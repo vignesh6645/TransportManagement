@@ -14,4 +14,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
 
     Page<User> searchAllByNameLike(String s, Pageable paging);
+
+    Optional<User> findByName(String name);
 }

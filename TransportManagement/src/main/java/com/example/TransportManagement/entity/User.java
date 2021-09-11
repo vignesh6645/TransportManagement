@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-
+@NoArgsConstructor
 @Entity
 @Table(name = "User_vg")
 public class User {
@@ -43,4 +43,8 @@ public class User {
 
 
 
+    public User(User user) {
+        this.name = name;
+        this.password = password;
+    }
 }

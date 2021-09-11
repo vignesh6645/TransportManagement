@@ -13,5 +13,7 @@ public interface VehicleTypeInterface {
 
     Optional<VehicleType> deletevehicleType(VehicleTypeDTO vehicleTypeDTO);
 
-    List<VehicleType> listall();
+
+
+    List<VehicleType> listAll();
 }

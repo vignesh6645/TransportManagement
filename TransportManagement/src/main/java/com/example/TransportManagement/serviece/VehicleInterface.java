@@ -11,9 +11,11 @@ public interface VehicleInterface {
 
     Optional<Vehicle> updatevehicle(VehicleDTO vehicleDTO);
 
-    APIResponse<Vehicle> vehiclepagination(int offset, int pageSize, String vehicleName);
+
 
     Optional<Vehicle> findvehicleById(int id);
 
     Optional<Vehicle> deletevehicle(VehicleDTO vehicleDTO);
+
+    APIResponse<Vehicle> vehiclePagination(int offset, int pageSize, String vehicleName);
 }

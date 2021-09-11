@@ -52,6 +52,7 @@ public class VehicleServieceImplements  implements VehicleInterface {
             Optional<User> user = userRepository.findById(userDTO.getId());
             user.ifPresent(finalVehicle::setUser);
 
+
         });
 
        Vehicle obj=vehicleRespository.save(vehicle);
@@ -68,6 +69,9 @@ public class VehicleServieceImplements  implements VehicleInterface {
             existVehicle.get().setVehicleName(vehicleDTO.getVehicleName());
             existVehicle.get().setRegistrationNumber(vehicleDTO.getRegistrationNumber());
         }
+        else {
+            throw new RuntimeException("Not found");
+        }
 
 
         Optional<VehicleType> vehicleType=vehicleTypeRepository.findById(vehicleDTO
@@ -76,11 +80,17 @@ public class VehicleServieceImplements  implements VehicleInterface {
 
             existVehicle.get().setVehicle_type_id(vehicleType.get());
         }
+        else {
+            throw new RuntimeException("Not found");
+        }
         vehicleDTO.getUserId().forEach(userDTO -> {
             Optional<User> user = userRepository.findById(userDTO.getId());
             if (user.isPresent()){
 
                 existVehicle.get().setUser(user.get());
+            }
+            else {
+                throw new RuntimeException("Not found");
             }
         });
        Vehicle obj= vehicleRespository.save(existVehicle.get());
@@ -88,7 +98,7 @@ public class VehicleServieceImplements  implements VehicleInterface {
     }
 
     @Override
-    public APIResponse<Vehicle> vehiclepagination(int offset, int pageSize, String vehicleName) {
+    public APIResponse<Vehicle> vehiclePagination(int offset, int pageSize, String vehicleName) {
 
         Pageable paging= PageRequest.of(offset,pageSize);
         Page<Vehicle> vehicles=vehicleRespository.searchAllByvehicleNameLike("%"+ vehicleName +"%", paging);

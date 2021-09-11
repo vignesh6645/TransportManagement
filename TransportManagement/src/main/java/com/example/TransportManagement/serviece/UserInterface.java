@@ -1,5 +1,6 @@
 package com.example.TransportManagement.serviece;
 
+import com.example.TransportManagement.dto.TokenDTO;
 import com.example.TransportManagement.dto.UserDTO;
 import com.example.TransportManagement.entity.User;
 import org.springframework.data.domain.Page;
@@ -16,4 +17,6 @@ public interface UserInterface {
     Optional<User> deleteuser(UserDTO userDTO);
 
     Optional<User> UpdateUser(UserDTO userDTO);
+
+    TokenDTO Jwt(TokenDTO tokenDTO);
 }

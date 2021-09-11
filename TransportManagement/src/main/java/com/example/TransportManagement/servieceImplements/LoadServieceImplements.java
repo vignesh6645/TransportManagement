@@ -1,6 +1,5 @@
 package com.example.TransportManagement.servieceImplements;
 
-import com.example.TransportManagement.baseresponse.BaseResponse;
 import com.example.TransportManagement.dto.LoadDTO;
 import com.example.TransportManagement.entity.Load;
 import com.example.TransportManagement.entity.Vehicle;
@@ -46,6 +45,9 @@ public class LoadServieceImplements implements LoadInterface{
                 load.setVehicle(vehicle.get());
 
             }
+            else {
+                throw new RuntimeException("Not found");
+            }
             Load obj = loadRepository.save(load);
 
         });
@@ -61,11 +63,17 @@ public class LoadServieceImplements implements LoadInterface{
             existLoad.get().setLoadName(loadDTO.getLoadName());
             existLoad.get().setDestination(loadDTO.getDestination());
         }
+        else {
+            throw new RuntimeException("Not found");
+        }
         loadDTO.getVehicleId().forEach(vehicleDTO -> {
             Optional<Vehicle> vehicle = vehicleRespository.findById(vehicleDTO.getVehicle_id());
             if (vehicle.isPresent()){
 
                 existLoad.get().setVehicle(vehicle.get());
+            }
+            else {
+                throw new RuntimeException("Not found");
             }
             Load obj1 = loadRepository.save(existLoad.get());
 
@@ -81,6 +89,9 @@ public class LoadServieceImplements implements LoadInterface{
 
             existLoad.get().setIsDelete(1);
             Load obj3 = loadRepository.save(existLoad.get());
+        }
+        else {
+            throw new RuntimeException("Not found");
         }
         return existLoad;
     }
